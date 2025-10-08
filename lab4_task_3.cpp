@@ -9,7 +9,7 @@ void f(double x, double &y2, double &y4, double &y10, double &ya, double &yb, do
 int main() {
     double x, y2, y4, y10, ya, yb, yab, a, b;
     int num_neg = 0;
-    int m = -100;
+    double m;
 
     cout << "Введите x\n";
     cin >> x;
@@ -27,14 +27,23 @@ int main() {
     cout << "Введите 7 вещественных чисел\n";
     for (int i = 0; i < 7; i++) {
         cin >> num_x[i];
+
         num_y[i] = f(num_x[i]);
     }
-    for(double n : num_y) {
-        num_neg += n < 0;
-        m = max(n, m);
+    m = num_y[0];
+    for(int i = 0; i < 7; i ++) {
+        if (num_y[i] < 0){
+            num_neg += 1;}
+        if (num_y[i] > m) {
+            m = num_y[i];
+        }
     }
 
-    cout << "b) Кол-во отрицательных чисел равно " << num_neg << ", максимаотый элемент массива равен " << m << endl;
+    cout << "b) Кол-во отрицательных чисел равно " << num_neg << ", максимальный элемент массива равен " << m << endl;
+
+    for (int i = 0; i < 7; i ++){
+        cout << num_y[i] << endl;
+    }
 
 }
 double f(double x) {
